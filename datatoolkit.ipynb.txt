@@ -1,0 +1,2941 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "51abf828-72db-4271-8b79-8874cadd3d5d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np \n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2518c605-12c8-419e-a4a0-36d5f13bf16e",
+   "metadata": {},
+   "source": [
+    "1. Create a NumPy array 'arr' of integers from 0 to 5 and print its data type.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "6ac6f561-6abd-4245-b9b9-31f5441cbd6c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0 1 2 3 4 5]\n",
+      "int32\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "arr= np.array([0,1,2,3,4,5])\n",
+    "print(arr) \n",
+    "print(arr.dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f81839ef-884a-4927-a81f-c2a6d57bbd2a",
+   "metadata": {},
+   "source": [
+    "2. Given a NumPy array 'arr', check if its data type is float64."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "6f1288b4-6744-4cc3-8c38-7e886ca33110",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "float64\n"
+     ]
+    }
+   ],
+   "source": [
+    "#checking dtype \n",
+    "arr = np.array([1.5, 2.6, 3.7])\n",
+    "print(arr.dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "dee75382-e08b-417d-8ec6-7845dd187b6b",
+   "metadata": {},
+   "source": [
+    "3. Create a NumPy array 'arr' with a data type of complex128 containing three complex numbers.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "60e078de-edcd-44a8-8321-eefa5fdd06df",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "complex128\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr= np.array([1,2,3, 3+3J, 4+4J , 5+3J])\n",
+    "print(arr.dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "43ebbcd3-6d8a-4761-b478-c59687080e2c",
+   "metadata": {},
+   "source": [
+    "4. Convert an existing NumPy array 'arr' of integers to float32 data type."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "6fbeed60-68ad-4149-858c-988f5c6afcfd",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "int32\n",
+      "float32\n"
+     ]
+    }
+   ],
+   "source": [
+    "#converting int array to float array \n",
+    "arr= np.array([1,2,3,4,5])\n",
+    "print(arr.dtype)\n",
+    "array_fofi = arr.astype(np.float32)\n",
+    "print(array_fofi.dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c489cf41-c555-4604-9f7f-8954feb01eaf",
+   "metadata": {},
+   "source": [
+    "5. Given a NumPy array 'arr' with float64 data type, convert it to float32 to reduce decimal precision."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "a555cf54-d3b0-406a-8424-b71c3b195dc4",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "original array: [1.2 2.3]\n",
+      "float64\n",
+      "converted array: [1.2 2.3]\n",
+      "float32\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr=np.array([1.2,2.3],dtype=np.float64)\n",
+    "print(\"original array:\", arr)\n",
+    "print(arr.dtype)\n",
+    "new_arr=arr.astype(np.float32)\n",
+    "print(\"converted array:\", new_arr)\n",
+    "print(new_arr.dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "914186e7-2507-40d6-a28a-622de0aabef9",
+   "metadata": {},
+   "source": [
+    "6. Write a function array_attributes that takes a NumPy array as input and returns its shape, size, and data\n",
+    "type."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "f5206207-a873-4bd8-887b-ead9f529fa18",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "enter array here [1,2,3,45]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(4,)\n",
+      "4\n",
+      "int32\n"
+     ]
+    }
+   ],
+   "source": [
+    "#making function theat defines the shape ,size and dtype \n",
+    "def array_attributes(array_x):\n",
+    "    shape=array_x.shape\n",
+    "    size=array_x.size\n",
+    "    dtype=array_x.dtype\n",
+    "    return shape , size , dtype \n",
+    "\n",
+    "try:\n",
+    "    arr = np.array(eval(input(\"enter array here\")))\n",
+    "except Exception as ex:\n",
+    "    print( ex)\n",
+    "attributes = array_attributes(arr)\n",
+    "shape,size,dtype = attributes \n",
+    "print(shape)\n",
+    "print(size)\n",
+    "print(dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "43c17cd4-074f-4ad6-92e5-34d5af63373a",
+   "metadata": {},
+   "source": [
+    "7. Create a function array_dimension that takes a NumPy array as input and returns its dimensionality"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "f48e8fb2-4bfa-4c59-9365-fd95bede7492",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "enter array here  [1,2,3]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n"
+     ]
+    }
+   ],
+   "source": [
+    "def array_dimension(array_d):\n",
+    "    dimension=array_d.ndim\n",
+    "    return dimension \n",
+    "input_arr=(input(\"enter array here \"))\n",
+    "arr1=np.array(input_arr.split())\n",
+    "func=array_dimension(arr1)\n",
+    "print(func)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "704597ce-37e3-49ee-b6cb-347b64d2142e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "enter array here [1,2,3,4]\n"
+     ]
+    },
+    {
+     "ename": "ValueError",
+     "evalue": "invalid literal for int() with base 10: '[1,2,3,4]'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mValueError\u001b[0m                                Traceback (most recent call last)",
+      "Cell \u001b[1;32mIn[5], line 6\u001b[0m\n\u001b[0;32m      3\u001b[0m     total_s\u001b[38;5;241m=\u001b[39mitem_s\u001b[38;5;241m*\u001b[39marray_s\u001b[38;5;241m.\u001b[39msize\n\u001b[0;32m      4\u001b[0m     \u001b[38;5;28;01mreturn\u001b[39;00m item_s , total_s\n\u001b[1;32m----> 6\u001b[0m arr\u001b[38;5;241m=\u001b[39m\u001b[38;5;28mint\u001b[39m(\u001b[38;5;28minput\u001b[39m(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124menter array here\u001b[39m\u001b[38;5;124m\"\u001b[39m))\n\u001b[0;32m      7\u001b[0m item_size,total_size\u001b[38;5;241m=\u001b[39m size_i(arr)\n\u001b[0;32m      8\u001b[0m \u001b[38;5;28mprint\u001b[39m(item_size)\n",
+      "\u001b[1;31mValueError\u001b[0m: invalid literal for int() with base 10: '[1,2,3,4]'"
+     ]
+    }
+   ],
+   "source": [
+    "    8!"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "acd7cb36-1bad-4f38-baf4-f7c07b7ec682",
+   "metadata": {},
+   "source": [
+    "9. Create a function array_strides that takes a NumPy array as input and returns the strides of the array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "fcb8bd90-e5b1-4093-98ee-4372ee0392a4",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "strides : (12, 4)\n"
+     ]
+    }
+   ],
+   "source": [
+    "def array_strides(arr):\n",
+    "    return arr.strides \n",
+    "if __name__ == \"__main__\":\n",
+    "    arr=np.array([[1,2,3,],[4,5,6]],dtype=np.int32)\n",
+    "    strides=array_strides(arr)\n",
+    "    print(\"strides :\", strides)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "9d9dd7a3-0ce6-4d3d-8ec4-2a33234ce26b",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "TypeError",
+     "evalue": "argument for array() given by name ('dtype') and position (position 1)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
+      "Cell \u001b[1;32mIn[21], line 4\u001b[0m\n\u001b[0;32m      2\u001b[0m     \u001b[38;5;28;01mreturn\u001b[39;00m arr\u001b[38;5;241m.\u001b[39mshape , arr\u001b[38;5;241m.\u001b[39mstrides \n\u001b[0;32m      3\u001b[0m \u001b[38;5;28;01mif\u001b[39;00m \u001b[38;5;18m__name__\u001b[39m\u001b[38;5;241m==\u001b[39m \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124m__main__\u001b[39m\u001b[38;5;124m\"\u001b[39m:\n\u001b[1;32m----> 4\u001b[0m     ar\u001b[38;5;241m=\u001b[39mnp\u001b[38;5;241m.\u001b[39marray([\u001b[38;5;241m1\u001b[39m,\u001b[38;5;241m2\u001b[39m,\u001b[38;5;241m3\u001b[39m,\u001b[38;5;241m4\u001b[39m],[\u001b[38;5;241m4\u001b[39m,\u001b[38;5;241m5\u001b[39m,\u001b[38;5;241m6\u001b[39m,\u001b[38;5;241m7\u001b[39m],dtype\u001b[38;5;241m=\u001b[39mnp\u001b[38;5;241m.\u001b[39mint32)\n\u001b[0;32m      5\u001b[0m     shape,strides\u001b[38;5;241m=\u001b[39msh_st(ar)\n\u001b[0;32m      6\u001b[0m     \u001b[38;5;28mprint\u001b[39m(shape)\n",
+      "\u001b[1;31mTypeError\u001b[0m: argument for array() given by name ('dtype') and position (position 1)"
+     ]
+    }
+   ],
+   "source": [
+    "10!"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "60972126-8bac-42e4-bce5-60dbe2d96b42",
+   "metadata": {},
+   "source": [
+    "11. Create a function `create_zeros_array` that takes an integer `n` as input and returns a NumPy array of\n",
+    "zeros with `n` elements."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "0092676e-808a-4fdc-904f-b4282bdafa0a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "enter input here  8,9\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0.]\n",
+      " [0. 0. 0. 0. 0. 0. 0. 0. 0.]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def create_zeros_array(n):\n",
+    "    return np.zeros(n)\n",
+    "\n",
+    "\n",
+    "i=eval(input(\"enter input here \"))\n",
+    "func=create_zeros_array(i)\n",
+    "print(func)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "52fb626a-5e7d-453f-9688-907fc2e024a6",
+   "metadata": {},
+   "source": [
+    "12. Write a function `create_ones_matrix` that takes integers `rows` and `cols` as inputs and generates a 2D\n",
+    "NumPy array filled with ones of size `rows x cols`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "da0be5c8-ed08-4acd-b740-7d09f15626fd",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "enter row here 8\n",
+      "enter column here 9\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1. 1. 1. 1. 1. 1. 1. 1. 1.]\n",
+      " [1. 1. 1. 1. 1. 1. 1. 1. 1.]\n",
+      " [1. 1. 1. 1. 1. 1. 1. 1. 1.]\n",
+      " [1. 1. 1. 1. 1. 1. 1. 1. 1.]\n",
+      " [1. 1. 1. 1. 1. 1. 1. 1. 1.]\n",
+      " [1. 1. 1. 1. 1. 1. 1. 1. 1.]\n",
+      " [1. 1. 1. 1. 1. 1. 1. 1. 1.]\n",
+      " [1. 1. 1. 1. 1. 1. 1. 1. 1.]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def create_ones_matrix(row,column):\n",
+    "    return np.ones((row,column))\n",
+    "r=int(input(\"enter row here\"))\n",
+    "c=int(input(\"enter column here\"))\n",
+    "func=create_ones_matrix(r,c)\n",
+    "print(func)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "198402b4-e01d-4e6e-8136-e47d17cc2d9d",
+   "metadata": {},
+   "source": [
+    "13. Write a function `generate_range_array` that takes three integers start, stop, and step as arguments and\n",
+    "creates a NumPy array with a range starting from `start`, ending at stop (exclusive), and with the specified\n",
+    "`step"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "6bf171fd-2e3a-44a0-bcbb-7a842fec9fe8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "enter start value here 4\n",
+      "enter stop value here  40\n",
+      "enter steps value here  2\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[ 4  6  8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def generate_range_array(start,stop,step):\n",
+    "    return np.arange(start,stop,step)\n",
+    "starts=int(input(\"enter start value here\"))\n",
+    "stops=int(input(\"enter stop value here \"))\n",
+    "steps=int(input(\"enter steps value here \"))\n",
+    "func = generate_range_array(starts,stops,steps)\n",
+    "print(func)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "deebf7f9-a4f4-4f6c-b69d-03c801832003",
+   "metadata": {},
+   "source": [
+    "14. Design a function `generate_linear_space` that takes two floats `start`, `stop`, and an integer `num` as\n",
+    "arguments and generates a NumPy array with num equally spaced values between `start` and `stop`\n",
+    "(inclusive)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "id": "a9fd4713-08b3-4acb-8a80-2b630c92e590",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "enter start value here 4\n",
+      "enter stop value here  400\n",
+      "enter numeric value for linear spacing here  3\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[  4   7  10  13  16  19  22  25  28  31  34  37  40  43  46  49  52  55\n",
+      "  58  61  64  67  70  73  76  79  82  85  88  91  94  97 100 103 106 109\n",
+      " 112 115 118 121 124 127 130 133 136 139 142 145 148 151 154 157 160 163\n",
+      " 166 169 172 175 178 181 184 187 190 193 196 199 202 205 208 211 214 217\n",
+      " 220 223 226 229 232 235 238 241 244 247 250 253 256 259 262 265 268 271\n",
+      " 274 277 280 283 286 289 292 295 298 301 304 307 310 313 316 319 322 325\n",
+      " 328 331 334 337 340 343 346 349 352 355 358 361 364 367 370 373 376 379\n",
+      " 382 385 388 391 394 397]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def function_y(start,stop,num):\n",
+    "    return np.arange(start,stop,num)\n",
+    "starts=int(input(\"enter start value here\"))\n",
+    "stops=int(input(\"enter stop value here \"))\n",
+    "nums=int(input(\"enter numeric value for linear spacing here \"))\n",
+    "func=function_y(starts,stops,nums)\n",
+    "print(func)"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "440a5d10-5b9d-4867-af16-7ec796f200e6",
+   "metadata": {},
+   "source": [
+    "15. Create a function `create_identity_matrix` that takes an integer `n` as input and generates a square\n",
+    "identity matrix of size `n x n` using `numpy.eye`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "id": "7dbb533e-76cf-45b0-8219-98d927984dfe",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "enter input value here 4\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1. 0. 0. 0.]\n",
+      " [0. 1. 0. 0.]\n",
+      " [0. 0. 1. 0.]\n",
+      " [0. 0. 0. 1.]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def function_i(n):\n",
+    "    return np.eye(n,n)\n",
+    "inputs=int(input(\"enter input value here\"))\n",
+    "func=function_i(inputs)\n",
+    "print(func)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4927964f-df92-4a24-913c-e9df0713a053",
+   "metadata": {},
+   "source": [
+    "16. Write a function that takes a Python list and converts it into a NumPy array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "id": "79c7ac55-cadd-4205-8189-fd7f2860f3ec",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "enter list here  [\"hello\",\"hii\"]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[\"hello\",\"hii\"]\n",
+      "<U15\n"
+     ]
+    }
+   ],
+   "source": [
+    "def function_p(p_l):\n",
+    "    return np.array(p_l)\n",
+    "list=input(\"enter list here \")\n",
+    "func=function_p(list)\n",
+    "print(func)\n",
+    "print(func.dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6d622c23-50d6-4124-b162-8d7287730235",
+   "metadata": {},
+   "source": [
+    "17. Create a NumPy array and demonstrate the use of `numpy.view` to create a new array object with the\n",
+    "same data."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "id": "897bea53-c77a-4bbb-855d-b801f0c6d43b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3 4 5]\n",
+      "[1 2 3 4 5]\n",
+      "after modifying\n",
+      "[ 1  2  3 33  5]\n",
+      "[ 1  2  3 33  5]\n"
+     ]
+    }
+   ],
+   "source": [
+    "o_a = np.array([1,2,3,4,5])\n",
+    "v_a=o_a.view()\n",
+    "print (o_a)\n",
+    "print(v_a)\n",
+    "v_a[3]=33\n",
+    "print(\"after modifying\")\n",
+    "print(o_a)\n",
+    "print(v_a)      \n",
+    "      "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a44f4cd1-20d6-4fbd-ad47-bbc2833867c7",
+   "metadata": {},
+   "source": [
+    "18. Write a function that takes two NumPy arrays and concatenates them along a specified axis."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "id": "50e467b7-bbd2-4311-ae06-fee3432f7b06",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [4 5 6]\n",
+      " [3 2 1]\n",
+      " [6 5 4]]\n",
+      "[[1 2 3 3 2 1]\n",
+      " [4 5 6 6 5 4]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def concatenate(array1,array2,axiss=0):\n",
+    "    return np.concatenate((array1,array2),axis=axiss)\n",
+    "arr1=([[1,2,3],[4,5,6]])\n",
+    "arr2=([[3,2,1],[6,5,4]])\n",
+    "result = concatenate( arr1,arr2,axiss=0)\n",
+    "print(result)\n",
+    "result=concatenate(arr1,arr2,axiss=1)\n",
+    "print(result)\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9d573efe-f3e8-4eed-8fb8-73b986f942c8",
+   "metadata": {},
+   "source": [
+    "19. Create two NumPy arrays with different shapes and concatenate them horizontally using `numpy.concatenate`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 75,
+   "id": "ab4b3cd6-456c-41a3-b8d9-077c493ef990",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3 3 2 1]\n",
+      " [4 5 6 6 5 4]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr1=([[1,2,3],[4,5,6]])\n",
+    "arr2=([[3,2,1],[6,5,4]])\n",
+    "result = np.concatenate( (arr1,arr2),axis=1)\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2c6e4ecf-42e5-49af-aaa1-aaae82987898",
+   "metadata": {},
+   "source": [
+    "\n",
+    "20. Write a function that vertically stacks multiple NumPy arrays given as a list."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "0dba8aab-43dc-4721-9452-9f69d01b426a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3 4]\n",
+      " [4 5 6 7]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def function_s(array_group):\n",
+    "    stacked_array= np.vstack(array_group)\n",
+    "    return stacked_array\n",
+    "arr1= ([1,2,3,4])\n",
+    "arr2=([4,5,6,7])\n",
+    "arrays_g=[arr1,arr2]\n",
+    "s_l=function_s(arrays_g)\n",
+    "print(s_l)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "54b40685-3232-446f-a76d-4dac3e9914d2",
+   "metadata": {},
+   "source": [
+    "21. Write a Python function using NumPy to create an array of integers within a specified range (inclusive)\n",
+    "with a given step size."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "id": "1fb3f20b-8bbf-4c59-bb9d-75be0b8341a7",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[ 1  3  5  7  9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47\n",
+      " 49 51 53 55 57 59 61 63 65 67 69 71 73 75 77 79 81 83 85 87 89 91 93 95\n",
+      " 97 99]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def function_r(start , stop,step):\n",
+    "    arr=np.arange(start,stop,step)\n",
+    "    return arr\n",
+    "str=1\n",
+    "sto=100\n",
+    "ste=2\n",
+    "func=function_r(str,sto,ste)\n",
+    "print(func)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0ccc5363-1df7-4b07-9da9-9a6c72b24894",
+   "metadata": {},
+   "source": [
+    "22. Write a Python function using NumPy to generate an array of 10 equally spaced values between 0 and 1(inclusive)!."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 58,
+   "id": "c88c09e9-02e0-42f7-9d88-5a9c9695a98e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0.         0.11111111 0.22222222 0.33333333 0.44444444 0.55555556\n",
+      " 0.66666667 0.77777778 0.88888889 1.        ]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#np.linspace is used where equally spaced value are needed in between a range \n",
+    "def eq_s():\n",
+    "    return np.linspace(0,1,10)\n",
+    "linspace=eq_s()\n",
+    "print(linspace)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5e2598eb-83e1-4c23-9994-0120ebc19b63",
+   "metadata": {},
+   "source": [
+    "23. Write a Python function using NumPy to create an array of 5 logarithmically spaced values between 1 and\n",
+    "1000 (inclusive)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "id": "e08e9fcc-b868-4057-accb-e715fcf67c1f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[   1.            5.62341325   31.6227766   177.827941   1000.        ]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#np.logspace() is uded where logarithmatically spaced values are needed in between a range \n",
+    "def log_ar():\n",
+    "    return np.logspace( start =np.log10(1) , stop = np.log10(1000),num= 5)\n",
+    "l=log_ar()\n",
+    "print(l)\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6af53a67-7c6e-453a-ace6-093e84b07557",
+   "metadata": {},
+   "source": [
+    "24. Create a Pandas DataFrame using a NumPy array that contains 5 rows and 3 columns, where the values\n",
+    "are random integers between 1 and 100."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 64,
+   "id": "0381466a-196a-4889-8ef6-e287b5f598f0",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   c1  c2  c3\n",
+      "0  86  91  88\n",
+      "1   1  37  97\n",
+      "2  15   1  68\n",
+      "3  47  29  68\n",
+      "4  91  48  48\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd \n",
+    "data = np.random.randint(1,100 ,size=(5,3))\n",
+    "df=pd.DataFrame(data,columns = [\"c1\",\"c2\",\"c3\"])\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "401de123-d3cd-4989-9eb6-91d1e52443ed",
+   "metadata": {},
+   "source": [
+    "25. Write a function that takes a Pandas DataFrame and replaces all negative values in a specific column\n",
+    "with zeros. Use NumPy operations within the Pandas DataFrame."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 67,
+   "id": "726f2d28-d584-434f-ae43-c525a934c295",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "original dataframe\n",
+      "   A   B  C\n",
+      "0  1  10 -1\n",
+      "1 -2 -20 -2\n",
+      "2  3  30 -3\n",
+      "3 -4  40 -4\n",
+      "4  5 -50 -5\n",
+      "modified dataframe\n",
+      "   A   B  C\n",
+      "0  1  10 -1\n",
+      "1  0 -20 -2\n",
+      "2  3  30 -3\n",
+      "3  0  40 -4\n",
+      "4  5 -50 -5\n"
+     ]
+    }
+   ],
+   "source": [
+    "def function_r(df ,column):\n",
+    "    df[column]=np.where(df[column]<0,0,df[column])\n",
+    "    return df \n",
+    "data = {\n",
+    "    'A': [1, -2, 3, -4, 5],\n",
+    "    'B': [10, -20, 30, 40, -50],\n",
+    "    'C': [-1, -2, -3, -4, -5]\n",
+    "} \n",
+    "df=pd.DataFrame(data)\n",
+    "print(\"original dataframe\")\n",
+    "print(df)\n",
+    "df_c=function_r(df,\"A\")\n",
+    "print(\"modified dataframe\")\n",
+    "print(df_c)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "57d43c58-5b40-4b5a-b216-25ddb235e56f",
+   "metadata": {},
+   "source": [
+    "26. Access the 3rd element from the given NumPy array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "d1de551b-bce7-427f-97ee-a063500f1d11",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "30"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr = np.array([10, 20, 30, 40, 50])\n",
+    "arr[2]\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ddb76114-c8eb-4104-ab08-bcaaf00ba565",
+   "metadata": {},
+   "source": [
+    "27. Retrieve the element at index (1, 2) from the 2D NumPy array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "c8f62879-feac-4aa7-86ea-8d7df7fc5a8b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "6\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "arr_2d= np.array([[1,2,3],\n",
+    "                  [4,5,6],\n",
+    "                  [7,8,9]])\n",
+    "element_oni=arr_2d[1,2]\n",
+    "print(element_oni)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5514a65b-e024-417c-8bc4-9df193aa5bc2",
+   "metadata": {},
+   "source": [
+    "28. Using boolean indexing, extract elements greater than 5 from the given NumPy array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "be715fb3-b8a7-4c1b-82cc-ff3171894262",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "\n",
+    "arr = np.array([3, 8, 2, 10, 5, 7])\n",
+    "for i in arr:\n",
+    "    if i >5:\n",
+    "        print(i)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "432d45dc-1bb0-4e91-8a9a-b28a0ef356cf",
+   "metadata": {},
+   "source": [
+    "29. Perform basic slicing to extract elements from index 2 to 5 (inclusive) from the given NumPy array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "f7da55a2-426a-430d-9602-b4fa24e640df",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[3 4 5]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])\n",
+    "ext_e= arr[2:5]\n",
+    "print(ext_e)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "554a2ca2-047f-4fce-90d6-13f876a84fed",
+   "metadata": {},
+   "source": [
+    "30. Slice the 2D NumPy array to extract the sub-array `[[2, 3], [5, 6]]` from the given array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 81,
+   "id": "9dd3585b-4cd5-417f-b274-488d115a6739",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr_2d=np.array([[1,2,3],\n",
+    "                 [4,5,6],\n",
+    "                 [7,8,9]])\n",
+    "ext_e= arr_2d[0:1 , 0:1]\n",
+    "print(ext_e)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2276dcd1-2bf7-411f-a25e-527855c4ebd4",
+   "metadata": {},
+   "source": [
+    "31.Write a NumPy function to extract elements in specific order from a given 2D array based on indices\n",
+    "provided in another array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "b9f0859b-78bc-459d-892d-009858600899",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[2 6 7]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def extract_elements_2d(arr,indices):\n",
+    "    indices = indices.astype(int)\n",
+    "    extracted_elements=arr[np.arange(indices.size),indices]\n",
+    "    return extracted_elements \n",
+    "arr=np.array([[1,2,3],[4,5,6],[7,8,9]])\n",
+    "indices= np.array([1,2,0])\n",
+    "result=extract_elements_2d(arr,indices)\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fdf86b84-61c4-4cc9-a0a2-8dab0ba7af0f",
+   "metadata": {},
+   "source": [
+    "32. Create a NumPy function that filters elements greater than a threshold from a given 1D array using\n",
+    "boolean indexing."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "54392e2b-4ac5-47b2-96e7-b0265c493238",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "filtered elements greater then  3 : [5 7 9 4]\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "#start\n",
+    "def filter_greater_than_threshold(arr,threshold):\n",
+    "    filtered_array=arr[arr>threshold]\n",
+    "    return filtered_array \n",
+    "arr=np.array([1,5,2,7,3,9,4])\n",
+    "threshold=3\n",
+    "result=filter_greater_than_threshold(arr,threshold)\n",
+    "print(\"filtered elements greater then \" , threshold,\":\",result)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6cb55d70-1322-4337-8cf8-00f3729e798c",
+   "metadata": {},
+   "source": [
+    "33. Develop a NumPy function that extracts specific elements from a 3D array using indices provided in three\n",
+    "separate arrays for each dimension."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "0c527b7f-5695-470d-a59b-46654031f17b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "extracted elements: [2 7]\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "def extract_elements_3d(arr,indices_dim1,indices_dim2,indices_dim3):\n",
+    "    indices_dim1=indices_dim1.astype(int)\n",
+    "    indices_dim2=indices_dim2.astype(int)\n",
+    "    indices_dim3=indices_dim3.astype(int)\n",
+    "    extracted_elements= arr[indices_dim1 , indices_dim2,indices_dim3]\n",
+    "    return extracted_elements\n",
+    "arr=np.array([[[1,2],[3,4]] , [[5,6,],[7,8]]])\n",
+    "indices_dim1=np.array([0,1])\n",
+    "indices_dim2=np.array([0,1])\n",
+    "indices_dim3=np.array([1,0])\n",
+    "result= extract_elements_3d(arr,indices_dim1,indices_dim2,indices_dim3)\n",
+    "print(\"extracted elements:\", result )"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "82a203de-6d84-402b-baac-7893bcbb9451",
+   "metadata": {},
+   "source": [
+    "34. Write a NumPy function that returns elements from an array where both two conditions are satisfied\n",
+    "using boolean indexing."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "aedbfb95-6cdd-441c-8eba-198a34faf38b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "elements satisfying both conditions  [4]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def elements_satisfying_conditions(arr,condition1,condition2):\n",
+    "    condition1=np.array(condition1,dtype=bool)\n",
+    "    condition2=np.array(condition2,dtype=bool)\n",
+    "    filtered_array=arr[condition1&condition2]\n",
+    "    return filtered_array\n",
+    "arr=np.array([1,5,2,7,3,9,4])\n",
+    "condition1=arr>3\n",
+    "condition2=arr%2==0\n",
+    "result=elements_satisfying_conditions(arr,condition1,condition2)\n",
+    "print(\"elements satisfying both conditions \",result)\n",
+    "    \n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d36c4690-4b76-4ce4-ab3c-eefa1c8b9758",
+   "metadata": {},
+   "source": [
+    "35. Create a NumPy function that extracts elements from a 2D array using row and column indices provided\n",
+    "in separate arrays.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "600d5801-189d-4e32-a81f-e100ce439fe5",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[4]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def function_e(arr,row,column):\n",
+    "    row=np.asarray(row)\n",
+    "    column=np.asarray(column)\n",
+    "    ext_e=arr[row,column]\n",
+    "    return ext_e\n",
+    "array1=np.array([[1,2,3],\n",
+    "         [4,5,6],\n",
+    "         [7,8,9]])\n",
+    "rows=np.array([1])\n",
+    "columns=np.array([0])\n",
+    "func=function_e(array1,rows,columns)\n",
+    "print(func)                "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2d512463-af3d-4ba5-97e8-038e77506af7",
+   "metadata": {},
+   "source": [
+    "36. Given an array arr of shape (3, 3), add a scalar value of 5 to each element using NumPy broadcasting."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "71b1177a-1167-404a-a385-bec9b8e0a937",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 6  7  8]\n",
+      " [ 9 10 11]\n",
+      " [12 13 14]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr=np.array([[1,2,3],\n",
+    "      [4,5,6],\n",
+    "      [7,8,9]])\n",
+    "arr=arr+5\n",
+    "print(arr)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7fbace39-63ef-4578-964b-13ceabaee090",
+   "metadata": {},
+   "source": [
+    "37. Consider two arrays arr1 of shape (1, 3) and arr2 of shape (3, 4). Multiply each row of arr2 by the\n",
+    "corresponding element in arr1 using NumPy broadcasting."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "a9b7115f-cf2a-4b21-9e9e-875b143399e0",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 1  2  3  4]\n",
+      " [10 12 14 16]\n",
+      " [27  0  3  6]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr1=np.array([1,2,3])\n",
+    "arr2=np.array([[1,2,3,4],\n",
+    "               [5,6,7,8],\n",
+    "               [9,0,1,2]])\n",
+    "arr_r=arr1.reshape(3,1)\n",
+    "multiple=arr2*arr_r\n",
+    "print(multiple)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3cd2d0e0-af46-4111-8d08-92a65d768ab0",
+   "metadata": {},
+   "source": [
+    "38. Given a 1D array arr1 of shape (1, 4) and a 2D array arr2 of shape (4, 3), add arr1 to each row of arr2 using\n",
+    "NumPy broadcasting."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "02da074a-8141-47c7-aec0-db76316bc49a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 2  3  4]\n",
+      " [ 6  7  8]\n",
+      " [10 11 12]\n",
+      " [ 7  6  5]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr1=np.array([1,2,3,4])\n",
+    "arr2=np.array([[1,2,3],\n",
+    "               [4,5,6],\n",
+    "               [7,8,9],\n",
+    "               [3,2,1]])\n",
+    "arr_reshape=arr1.reshape(4,1)\n",
+    "result=arr_reshape+arr2\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "15a955aa-9833-4b52-8cbe-5cc65e3542b4",
+   "metadata": {},
+   "source": [
+    "39. Consider two arrays arr1 of shape (3, 1) and arr2 of shape (1, 3). Add these arrays using NumPy\n",
+    "broadcasting."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "84055a08-1f0f-46a9-b5ad-52f3813e0a38",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[2]\n",
+      " [4]\n",
+      " [6]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr1=np.array([1,2,3])\n",
+    "arr2=np.array([[1],\n",
+    "       [2],\n",
+    "       [3]])\n",
+    "arr_reshape=arr1.reshape(3,1)\n",
+    "result=arr_reshape+arr2\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "20afe26e-7f10-440f-bfeb-63258e7dd844",
+   "metadata": {},
+   "source": [
+    "40. Given arrays arr1 of shape (2, 3) and arr2 of shape (2, 2), perform multiplication using NumPy\n",
+    "broadcasting. Handle the shape incompatibility."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "48e92e30-851f-48dc-8c5c-b9418cc47995",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "\n",
+    "# Given arrays\n",
+    "arr1 = np.array([[1, 2, 3], [4, 5, 6]])  # shape (2, 3)\n",
+    "arr2 = np.array([[1, 2], [3, 4]])        # shape (2, 2)\n",
+    "\n",
+    "# Reshape arr2 to (2, 1, 2) for broadcasting\n",
+    "arr2_reshaped = arr2[:, np.newaxis, :]  # shape (2, 1, 2)\n",
+    "\n",
+    "# Perform multiplication using broadcasting\n",
+    "result = arr1 * arr2_reshaped\n",
+    "\n",
+    "# Print the result\n",
+    "print(\"Result of multiplication:\")\n",
+    "print(result)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "658f6983-e09b-4bf9-ae85-71b2d13dd97f",
+   "metadata": {},
+   "source": [
+    "41. Calculate column wise mean for the given array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "2acd8d89-a3e0-4def-82fe-21876c017b88",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[2.5 3.5 4.5]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr=np.array([[1,2,3],\n",
+    "              [4,5,6]])\n",
+    "mean=np.mean(arr,axis=0)\n",
+    "print(mean)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6ebd78a9-db4c-4e6e-865e-cda71090a168",
+   "metadata": {},
+   "source": [
+    "42. Find maximum value in each row of the given array:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "id": "0bea4f13-e80a-4472-8d04-6c647c90220d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[3 6]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr=np.array([[1,2,3],\n",
+    "              [4,5,6]])\n",
+    "max_v=np.max(arr,axis=1)\n",
+    "print(max_v)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d9dc4c24-7b1f-4b15-aeae-ce82fbee302d",
+   "metadata": {},
+   "source": [
+    "43. For the given array, find indices of maximum value in each column."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "2e781cb1-764e-4e68-962e-eee771de0acc",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 1 1]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr=np.array([[1,2,3],\n",
+    "              [4,5,6]])\n",
+    "indices=np.argmax(arr,axis=0)\n",
+    "print(indices)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4a9adaf3-0208-41f1-8bf1-278bc7f88dce",
+   "metadata": {},
+   "source": [
+    "44. For the given array, apply custom function to calculate moving sum along rows.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "badcd5f2-4782-4b1a-8cc4-1dce74ce1409",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 1  3  6]\n",
+      " [ 4  9 15]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def c_s(arr):\n",
+    "    commulative_sum=np.cumsum(arr,axis=1)\n",
+    "    return commulative_sum\n",
+    "array1=np.array([[1,2,3],\n",
+    "         [4,5,6]])\n",
+    "func=c_s(array1)\n",
+    "print(func)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f7bfde83-3196-444e-a5db-54788101ff22",
+   "metadata": {},
+   "source": [
+    "45. In the given array, check if all elements in each column are even."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "c1e1181d-cb5d-490c-9968-adf4e715541a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[False False False]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#np.all is used to access all items in the array\n",
+    "arr1=np.array([[2,4,6],\n",
+    "       [3,5,7]])\n",
+    "check=np.all(arr1 % 2 == 0,axis=0)\n",
+    "print(check)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7a4d6a75-494c-4a93-9069-ee8678b68f62",
+   "metadata": {},
+   "source": [
+    "46. Given a NumPy array arr, reshape it into a matrix of dimensions `m` rows and `n` columns. Return the\n",
+    "reshaped matrix."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "399ccf29-5448-44f0-bbb2-7a62ad9d248e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3 4]\n",
+      " [5 6 7 7]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr=np.array([1,2,3,4,5,6,7,7])\n",
+    "matrix=arr.reshape(2,4)\n",
+    "print(matrix)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0582bfd7-b02c-4c03-8b64-77c1b360b508",
+   "metadata": {},
+   "source": [
+    "47. Create a function that takes a matrix as input and returns the flattened array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "dc405fe4-cb29-47ed-b857-e6594eaecc7a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "None\n"
+     ]
+    }
+   ],
+   "source": [
+    "def function_x(arr1):\n",
+    "    \n",
+    "    reshape=arr1.flatten()\n",
+    "    ter\n",
+    "arr=np.array([[1,2,3],\n",
+    "     [4,5,6]])\n",
+    "flatten=function_x(arr)\n",
+    "print(flatten)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9db481e2-a3c4-4d6d-84cd-98d9a0e68614",
+   "metadata": {},
+   "source": [
+    "48. Write a function that concatenates two given arrays along a specified axis."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "5339828b-430f-4cbb-8b42-98437a8ac9bd",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [4 5 6]\n",
+      " [3 2 1]\n",
+      " [6 5 4]]\n",
+      "[[1 2 3 3 2 1]\n",
+      " [4 5 6 6 5 4]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def function_c(arr1,arr2,axis=0):\n",
+    "    return np.concatenate((arr1,arr2),axis=axis)\n",
+    "ar1=np.array([[1,2,3],\n",
+    "              [4,5,6]])\n",
+    "ar2=np.array([[3,2,1],\n",
+    "               [6,5,4]])\n",
+    "result_r=function_c(ar1,ar2,axis=0)\n",
+    "print(result_r)\n",
+    "result_c=function_c(ar1,ar2,axis=1)\n",
+    "print(result_c)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "056555e0-87b2-4084-a219-5f6cf47f9006",
+   "metadata": {},
+   "source": [
+    "49. Create a function that splits an array into multiple sub-arrays along a specified axis."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "00d7c998-92d4-45b5-b59f-e3a033f46e74",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[array([[1, 2, 3]]), array([[4, 5, 6]])]\n",
+      "[array([[1],\n",
+      "       [4]]), array([[2],\n",
+      "       [5]]), array([[3],\n",
+      "       [6]])]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def function_s(arr,section=2,axis=0):\n",
+    "    return np.split(arr,section,axis=axis)\n",
+    "array_x=np.array([[1,2,3],\n",
+    "                  [4,5,6]])\n",
+    "#on axis0 in 2 part\n",
+    "result_r=function_s(array_x,section=2,axis=0)\n",
+    "print(result_r)\n",
+    "#on axis1 in 3 part \n",
+    "result_c=function_s(array_x,section=3,axis=1)\n",
+    "print(result_c)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a825be9a-4a61-4cb2-842f-6beb820bbc51",
+   "metadata": {},
+   "source": [
+    "50. Write a function that inserts and then deletes elements from a given array at specified indices."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "b58b9f7c-0791-415e-b125-3f032fe27b66",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[4 2 3]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def function_x(o_a,itoinsert,valuetoinsert,itodelete):\n",
+    "\n",
+    "        o_a=np.insert(o_a,itoinsert,valuetoinsert)\n",
+    "      #to delete \n",
+    "        o_a=np.delete(o_a,itodelete)\n",
+    "        return o_a\n",
+    "\n",
+    "arr=np.array([1,2,3])\n",
+    "indicestoinsert=[0,0]\n",
+    "valutoinsert=[4]\n",
+    "indicestodelete=[0,2]\n",
+    "func=function_x(arr,indicestoinsert,valutoinsert,indicestodelete)\n",
+    "print(func)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "71d7da63-2b31-4aff-9a9b-a36175ac2917",
+   "metadata": {},
+   "source": [
+    "51. Create a NumPy array `arr1` with random integers and another array `arr2` with integers from 1 to 10.\n",
+    "Perform element-wise addition between `arr1` and `arr2`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 63,
+   "id": "95640d5c-17c8-447a-8dca-18b93204940d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[4 1 1 4]\n",
+      "[1 2 3 4]\n",
+      "[5 3 4 8]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr1=np.random.randint(1,10,size=len(arr1))\n",
+    "print(arr1)\n",
+    "arr2=np.arange(1,5)\n",
+    "print(arr2)\n",
+    "arr_c=arr1+arr2\n",
+    "print(arr_c)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9e9404ec-caae-48be-9919-37644735187d",
+   "metadata": {},
+   "source": [
+    "52. Generate a NumPy array `arr1` with sequential integers from 10 to 1 and another array `arr2` with integers\n",
+    "from 1 to 10. Subtract `arr2` from `arr1` element-wise."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 67,
+   "id": "c117ab10-4968-4d78-99d1-3507519407c2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[-9 -7 -5 -3 -1  1  3  5  7]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr1=np.arange(10,1,-1)\n",
+    "arr2=np.arange(1,10)\n",
+    "arr_s=arr2-arr1\n",
+    "print(arr_s)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ce26d498-546f-465d-befd-aac26bf03d60",
+   "metadata": {},
+   "source": [
+    "53. Create a NumPy array `arr1` with random integers and another array `arr2` with integers from 1 to 5.\n",
+    "Perform element-wise multiplication between `arr1` and `arr2`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 71,
+   "id": "82edc500-cc69-497f-8e39-bb1d876f2d06",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[11 22 33 44]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr1=np.random.randint(1,100)\n",
+    "arr2=np.arange(1,5)\n",
+    "arr_m=arr1*arr2\n",
+    "print(arr_m)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d2d60669-3a4e-46ec-9a2b-f3b9d3a981cc",
+   "metadata": {},
+   "source": [
+    "54. Generate a NumPy array `arr1` with even integers from 2 to 10 and another array `arr2` with integers from 1\n",
+    "to 5. Perform element-wise division of `arr1` by `arr2`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 81,
+   "id": "53370bcc-52a0-4a64-af3a-c128f3db7e15",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[2. 2. 2. 2.]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr1=np.arange(2,10,2)\n",
+    "arr2=np.arange(1,5)\n",
+    "arr_d=arr1/arr2\n",
+    "print(arr_d)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bf1f88d5-f0c0-465a-8c49-67cdd6f38f10",
+   "metadata": {},
+   "source": [
+    "55. Create a NumPy array `arr1` with integers from 1 to 5 and another array `arr2` with the same numbers\n",
+    "reversed. Calculate the exponentiation of `arr1` raised to the power of `arr2` element-wise."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 89,
+   "id": "9e72e284-b9e9-4c0a-bf92-de0198ec7e27",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 8 9 4]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr1=np.arange(1,5)\n",
+    "arr2=arr1[::-1]\n",
+    "arr_e=np.power(arr1,arr2)\n",
+    "print(arr_e)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d34cf27e-9fb4-4b2a-916f-113f92572e36",
+   "metadata": {},
+   "source": [
+    "56. Write a function that counts the occurrences of a specific substring within a NumPy array of strings."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 115,
+   "id": "e6ae7256-8f55-44a2-8dbf-742b4567d66b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'hello': 3, 'world': 1, 'numpy': 1}\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "def function_c(arr):\n",
+    "    count={}\n",
+    "    for i in arr:\n",
+    "        if i in count:\n",
+    "            count[i]+=1\n",
+    "        else :\n",
+    "            count[i]=1\n",
+    "    return count\n",
+    "arr1 = np.array(['hello', 'world', 'hello', 'numpy', 'hello'])  \n",
+    "func=function_c(arr1)\n",
+    "print(func)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "66ed22fd-f905-4ebc-a7cb-165eb438f95c",
+   "metadata": {},
+   "source": [
+    "57. Write a function that extracts uppercase characters from a NumPy array of strings.\n",
+    "\n",
+    "arr = np.array(['Hello', 'World', 'OpenAI', 'GPT'])\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 123,
+   "id": "ef3f3ef3-aaad-4375-bb52-d72974db083d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['H' 'W' 'O' 'A' 'I' 'G' 'P' 'T']\n"
+     ]
+    }
+   ],
+   "source": [
+    "def function_e(arr):\n",
+    "    u=[]\n",
+    "    for string in arr:\n",
+    "        for char in string:\n",
+    "            if char.isupper():\n",
+    "                u.append(char)\n",
+    "    return np.array(u)   \n",
+    "arr1 = np.array(['Hello', 'World', 'OpenAI', 'GPT'])\n",
+    "func=function_e(arr1)\n",
+    "print(func)\n",
+    "            "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7af2355e-f00f-432e-a2c0-442489e660bf",
+   "metadata": {},
+   "source": [
+    "59. Write a function that concatenates strings in a NumPy array element-wise.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "bf6e4d6c-c8d9-4003-afa5-2589c21ff5b1",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['helloopen', 'worldai']\n"
+     ]
+    }
+   ],
+   "source": [
+    "def function_add(arr1,arr2):\n",
+    "    added_e=[]\n",
+    "    for i in range(len(arr2)):\n",
+    "       added_e.append( arr1[i]+arr2[i])\n",
+    "    return added_e\n",
+    "arr1s=np.array([\"hello\",\"world\"])    \n",
+    "arr2n=np.array([\"open\",\"ai\"])\n",
+    "\n",
+    "func=function_add(arr1s,arr2n)\n",
+    "print(func)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2918e5c4-5f61-497e-bab0-dfeba6b2cb42",
+   "metadata": {},
+   "source": [
+    "60. Write a function that finds the length of the longest string in a NumPy array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "95eff0fc-6a81-4a5b-a3fd-38d9122923fa",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "9\n"
+     ]
+    }
+   ],
+   "source": [
+    "def function_m(arr):\n",
+    "    max_length=0\n",
+    "    for s in arr:\n",
+    "        if len(s)>max_length:\n",
+    "            max_length=len(s)\n",
+    "    return max_length\n",
+    "\n",
+    "arr = np.array(['apple', 'banana', 'grape', 'pineapple'])\n",
+    "func=function_m(arr)\n",
+    "print(func)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "13e3f202-82ea-4ccd-85ff-12a866a11557",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "4336"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "3+4333"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "52108c28-f3a6-46be-9f3e-80127daf83e7",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1]\n",
+      "[1, 4]\n",
+      "[1, 4, 9]\n",
+      "[1, 4, 9, 16]\n",
+      "[1, 4, 9, 16, 25]\n",
+      "[1, 4, 9, 16, 25, 36]\n",
+      "[1, 4, 9, 16, 25, 36, 49]\n",
+      "[1, 4, 9, 16, 25, 36, 49, 64]\n",
+      "[1, 4, 9, 16, 25, 36, 49, 64, 81]\n",
+      "[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]\n"
+     ]
+    }
+   ],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "26ad142b-a6d8-484b-90ea-479a491eb4b1",
+   "metadata": {},
+   "source": [
+    "61. Create a dataset of 100 random integers between 1 and 1000. Compute the mean, median, variance, and\n",
+    "standard deviation of the dataset using NumPy's functions."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "1e9ceca2-c869-4ee8-a19d-f6f57c099806",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "mean: 48.39\n",
+      "median: 48.5\n",
+      "variance: 745.7778999999999\n",
+      "standard_deviation: 27.308934435455367\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr=np.random.randint(1,100,size=100)\n",
+    "mean=np.mean(arr)\n",
+    "median=np.median(arr)\n",
+    "variance=np.var(arr)\n",
+    "standard_deviation=np.std(arr)\n",
+    "print(\"mean:\",mean)\n",
+    "print(\"median:\",median)\n",
+    "print(\"variance:\",variance)\n",
+    "print(\"standard_deviation:\",standard_deviation)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "37a34bf6-799a-44c8-aa0f-63ea7db0f47c",
+   "metadata": {},
+   "source": [
+    "62. Generate an array of 50 random numbers between 1 and 100. Find the 25th and 75th percentiles of the\n",
+    "dataset"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "fa5782b5-6d4e-4cb7-b833-e19c43e9f41e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[76 20 77 13 97  6 79 99 10 18 96 58 85 27 54 32 37 36 24 29 43 67 80 40\n",
+      " 81 92 59 36 26 34 99 59 12  7 88 39 21 62 64 72 82 87 76 68 82 11 47 18\n",
+      " 51 20]\n",
+      "26.25\n",
+      "78.5\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr=np.random.randint(1,100 ,size=50)\n",
+    "a25th_percentile=np.percentile(arr,25)\n",
+    "b75th_percentile=np.percentile(arr,75)\n",
+    "print(arr)\n",
+    "print(a25th_percentile)\n",
+    "print(b75th_percentile)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "dd1cc372-68e8-4375-86d8-3848fdbfb235",
+   "metadata": {},
+   "source": [
+    "63. Create two arrays representing two sets of variables. Compute the correlation coefficient between these\n",
+    "arrays using NumPy's `corrcoef` function."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "81638a28-b366-4bdd-a637-126752fb10a6",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1.         0.13504397]\n",
+      " [0.13504397 1.        ]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr1=np.random.rand(50)\n",
+    "arr2=np.random.rand(50)\n",
+    "coff=np.corrcoef(arr1,arr2)\n",
+    "print(coff)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5d85f5c9-7ef2-47a6-b975-15d96c975642",
+   "metadata": {},
+   "source": [
+    "64. Create two matrices and perform matrix multiplication using NumPy's `dot` function."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "id": "d05827b1-4466-45ed-9dbc-623276706dce",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[42 36 30]\n",
+      " [96 81 66]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "mat1=np.array([[1,2,3],\n",
+    "               [4,5,6]])\n",
+    "mat2=np.array([[3,2,1],\n",
+    "               [6,5,4],\n",
+    "               [9,8,7]])\n",
+    "result=np.dot(mat1,mat2)\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2d6a5520-1d5d-4036-ac14-5ca8e06abb5b",
+   "metadata": {},
+   "source": [
+    "65. Create an array of 50 integers between 10 and 1000. Calculate the 10th, 50th (median), and 90th\n",
+    "percentiles along with the first and third quartiles."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "4ccdd289-bf7f-4a1e-946e-c8c1fc89cde3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[167.7  244.5  525.5  708.25 900.2 ]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr=np.random.randint(10,1000 , size=50)\n",
+    "percentile=np.percentile(arr,[10,25,50,75,90])\n",
+    "print(percentile)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "57499d39-23cc-484b-a5c2-f0e047b378b9",
+   "metadata": {},
+   "source": [
+    "66. Create a NumPy array of integers and find the index of a specific element.\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "27511f20-9abf-477d-9050-7186455b79ef",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(array([1], dtype=int64),)\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr=np.array([1,2,3])\n",
+    "element=2\n",
+    "result=np.where(arr==element)\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d04e6bd6-1798-445f-b6f0-3be6a4c1462b",
+   "metadata": {},
+   "source": [
+    "67. Generate a random NumPy array and sort it in ascending order"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "3d2e28a0-6f08-4f0f-a88c-1791244c0230",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "original array: [74 78 51 32 72 42 23 29 99 29 53  2 62 24 40 69  3 96 43 13 49 61 34 53\n",
+      " 88 89 89  2 36 20  9 46 27  6 65 63 95 54 30 31 35 11 35 69 72 19  5 18\n",
+      " 22 37]\n",
+      "sorted array: [ 2  2  3  5  6  9 11 13 18 19 20 22 23 24 27 29 29 30 31 32 34 35 35 36\n",
+      " 37 40 42 43 46 49 51 53 53 54 61 62 63 65 69 69 72 72 74 78 88 89 89 95\n",
+      " 96 99]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr=np.random.randint(1,100,size=50)\n",
+    "a=np.sort(arr)\n",
+    "print(\"original array:\", arr)\n",
+    "\n",
+    "print(\"sorted array:\",a)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "be17a9e2-532f-4ec9-b9d7-8292bbb58652",
+   "metadata": {},
+   "source": [
+    "68. Filter elements >20  in the given NumPy array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 57,
+   "id": "f05286a1-b802-451a-9c18-ef1b247ff646",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[25 42 30]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr = np.array([12, 25, 6, 42, 8, 30])\n",
+    "filt_arr=arr[arr>20]\n",
+    "print(filt_arr)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c94b902b-1e23-4206-b1ad-9584825454ce",
+   "metadata": {},
+   "source": [
+    "69. Filter elements which are divisible by 3 from a given NumPy array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "fa84e0dc-1431-4b73-9b08-e9f1d42dfc40",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "arr = np.array([1, 5, 8, 12, 15])\n",
+    "filt_arr=arr[arr%3==0]\n",
+    "print(filt_arr)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c6e733d0-4673-4fa6-9f9b-7f6913d5a4f3",
+   "metadata": {},
+   "source": [
+    "70. Filter elements which are ≥ 20 and ≤ 40 from a given NumPy array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "c0f5f4dc-3e52-4014-951f-de11b813ea97",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[20 30 40]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr = np.array([10, 20, 30, 40, 50])\n",
+    "filt_arr=arr[(arr>=20)&(arr<=40)]\n",
+    "print(filt_arr)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3c7421a8-34c5-4222-881a-80260eb18f2c",
+   "metadata": {},
+   "source": [
+    "71. For the given NumPy array, check its byte order using the `dtype` attribute byteorder"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "35cf46f1-8cbf-49cb-b5a2-33e30cffbe70",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "=\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr = np.array([1, 2, 3])\n",
+    "b_o=arr.dtype.byteorder\n",
+    "print(b_o)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "646fe5f1-f57d-4cbe-8b93-96a25b5ee91d",
+   "metadata": {},
+   "source": [
+    "72. For the given NumPy array, perform byte swapping in place using `byteswap()`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "c8ab9be7-dd81-4613-a884-6e3bcc2670df",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "array before byteswapping: [1 2 3]\n",
+      "array after byteswapping: [16777216 33554432 50331648]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr = np.array([1, 2, 3], dtype=np.int32)\n",
+    "print(\"array before byteswapping:\", arr)\n",
+    "arr.byteswap(inplace=True)\n",
+    "print(\"array after byteswapping:\" ,arr)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "26cbed4f-76db-498e-acf5-795728ed32e8",
+   "metadata": {},
+   "source": [
+    "73. For the given NumPy array, swap its byte order without modifying the original array using\n",
+    "`newbyteorder()`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "c2cd406b-bbe1-497f-bbab-f3ff7e1d7af8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3]\n",
+      "[16777216 33554432 50331648]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr = np.array([1, 2, 3], dtype=np.int32)\n",
+    "arr_s=arr.newbyteorder()\n",
+    "print(arr)\n",
+    "print(arr_s)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ed534e9e-0c49-4d59-83c2-278a3df53b9e",
+   "metadata": {},
+   "source": [
+    "74. For the given NumPy array and swap its byte order conditionally based on system endianness using\n",
+    "`newbyteorder()`.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "0798d160-1be3-4194-8f10-406491c48f9e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "\n",
+    "arr = np.array([1, 2, 3], dtype=np.int32)\n",
+    "\n",
+    "# Check system endianness\n",
+    "system_byteorder = arr.dtype.byteorder\n",
+    "\n",
+    "print(\"System byte order:\", system_byteorder)\n",
+    "\n",
+    "# Swap byte order conditionally\n",
+    "if system_byteorder != '=':\n",
+    "    arr = arr.newbyteorder()\n",
+    "\n",
+    "print(\"Array with swapped byte order:\")\n",
+    "print(arr)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "873298ca-d1f3-42f0-b455-b0cb101827b4",
+   "metadata": {},
+   "source": [
+    "75. For the given NumPy array, check if byte swapping is necessary for the current system using `dtype`\n",
+    "attribute `byteorder`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3656a3e0-0633-423a-86b1-6024be3d709c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import sys\n",
+    "\n",
+    "# Create a NumPy array\n",
+    "arr = np.array([1, 2, 3], dtype=np.int32)\n",
+    "\n",
+    "# Get the byte order of the array's dtype\n",
+    "dtype_byteorder = arr.dtype.byteorder\n",
+    "\n",
+    "# Get the byte order of the system\n",
+    "system_byteorder = sys.byteorder\n",
+    "\n",
+    "# Check if byte swapping is necessary\n",
+    "if dtype_byteorder != system_byteorder:\n",
+    "    arr = arr.byteswap()\n",
+    "\n",
+    "# Print the original or byte-swapped array\n",
+    "print(\"Array after byte swapping if necessary:\", arr)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "513a6a67-a5f7-48d7-8ab6-07f173205426",
+   "metadata": {},
+   "source": [
+    "76. Create a NumPy array `arr1` with values from 1 to 10. Create a copy of `arr1` named `copy_arr` and modify\n",
+    "an element in `copy_arr`. Check if modifying `copy_arr` affects `arr1`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "c30dcd5b-e931-485d-a057-6e650129c3f9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[88  2  3  4  5  6  7  8  9]\n",
+      "[88  2  3  4  5  6  7  8  9]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr1=np.arange(1,10)\n",
+    "copy_arr=arr1\n",
+    "copy_arr[0]=88\n",
+    "print(copy_arr)\n",
+    "print(arr1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fe0b7b2b-3025-40b5-a4a9-ab498e96696d",
+   "metadata": {},
+   "source": [
+    "77. Create a 2D NumPy array `matrix` of shape (3, 3) with random integers. Extract a slice `view_slice` from\n",
+    "the matrix. Modify an element in `view_slice` and observe if it changes the original `matrix`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "37ac146a-3b32-4702-adca-4b164d73f81f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 1  2  3]\n",
+      " [44  5  6]]\n",
+      "[[ 1  2  3]\n",
+      " [44  5  6]\n",
+      " [ 7  8  9]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "matrix=np.array([[1,2,3],\n",
+    "                 [4,5,6],\n",
+    "                 [7,8,9]])\n",
+    "view_slice=matrix[0:2]\n",
+    "view_slice[1,0]=44\n",
+    "print(view_slice)\n",
+    "print(matrix)\n",
+    "#yes the element also changed in the original matrix "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2eb666cb-9860-4cd1-aa5f-db8f5e94b3a6",
+   "metadata": {},
+   "source": [
+    "78. Create a NumPy array `array_a` of shape (4, 3) with sequential integers from 1 to 12. Extract a slice\n",
+    "`view_b` from `array_a` and broadcast the addition of 5 to view_b. Check if it alters the original `array_a`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "2268397e-5dd6-441e-bc37-1f6161486bf2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "original array: [[ 1  2  3]\n",
+      " [ 4  5  6]\n",
+      " [ 7  8  9]\n",
+      " [10 11 12]]\n",
+      "view_b slice: [[6]]\n",
+      "[[11]]\n",
+      "original array: [[ 1  2  3]\n",
+      " [ 4  5 11]\n",
+      " [ 7  8  9]\n",
+      " [10 11 12]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "array_a=np.arange(1,13).reshape(4,3)\n",
+    "print(\"original array:\" ,array_a)\n",
+    "view_b=array_a[1:2,2:3]\n",
+    "print(\"view_b slice:\",view_b)\n",
+    "view_b+=5\n",
+    "print(view_b)\n",
+    "print(\"original array:\",array_a)\n",
+    "#yes the operation on view_b affects the original array\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7735cd51-5ef1-4839-b05a-fad7b582873d",
+   "metadata": {},
+   "source": [
+    "79. Create a NumPy array `orig_array` of shape (2, 4) with values from 1 to 8. Create a reshaped view\n",
+    "`reshaped_view` of shape (4, 2) from orig_array. Modify an element in `reshaped_view` and check if it\n",
+    "reflects changes in the original `orig_array`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "id": "b9f9a740-d02a-4366-9c16-82f337ac138b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 1  2]\n",
+      " [55 55]\n",
+      " [ 5  6]\n",
+      " [ 7  8]]\n",
+      "[[ 1  2 55 55]\n",
+      " [ 5  6  7  8]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "orig_array=np.arange(1,9).reshape(2,4)\n",
+    "reshaped_view=orig_array.reshape(4,2)\n",
+    "reshaped_view[1]=55\n",
+    "print(reshaped_view)\n",
+    "print(orig_array)\n",
+    "#yes the modification on reshaped_view array reflects on orig_array array "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "28d4bf1a-7397-42b8-96df-e6fcf80540f7",
+   "metadata": {},
+   "source": [
+    "80. Create a NumPy array `data` of shape (3, 4) with random integers. Extract a copy `data_copy` of\n",
+    "elements greater than 5. Modify an element in `data_copy` and verify if it affects the original `data`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "8d905dc8-1603-475f-82e0-8e10d962dd80",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[57 99 48 66 21 62 62 29 50 11 27 95]\n",
+      "[[57  9 48 66]\n",
+      " [21 62 62 29]\n",
+      " [50 11 27 95]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "data=np.random.randint(1,100,size=(3,4))\n",
+    "copy=data[data>5]\n",
+    "copy[1]=99\n",
+    "print(copy)\n",
+    "print(data)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7e92dc45-b8c9-4a72-9ecd-d1f8b0b079df",
+   "metadata": {},
+   "source": [
+    "81. Create two matrices A and B of identical shape containing integers and perform addition and subtraction\n",
+    "operations between them."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "9cb3bbf5-9167-4c5d-903f-00bf1b2c714d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[  8 -49]\n",
+      " [ 49 -48]]\n",
+      "[[116  75]\n",
+      " [ 55 132]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "arr1=np.random.randint(1,100,size=(2,2))\n",
+    "arr2=np.random.randint(1,100,size=(2,2))\n",
+    "sub=arr1-arr2\n",
+    "print(sub)\n",
+    "add=arr1+arr2\n",
+    "print(add)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9785ecff-cd3e-4fc9-9630-2c7d3cea213b",
+   "metadata": {},
+   "source": [
+    "82. Generate two matrices `C` (3x2) and `D` (2x4) and perform matrix multiplication."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "cfbbe4d6-2710-436d-9572-28a32132778d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[3509 2430 4967 2243]\n",
+      " [3449 7013 9432 5751]\n",
+      " [3985 2149 5040 2079]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "c=np.random.randint(1,100,size=(3,2))\n",
+    "d=np.random.randint(1,100,size=(2,4))\n",
+    "mult=np.dot(cmat,dmat)\n",
+    "print(mult)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "64ffca8f-17c5-48c4-a6b8-48200df9335c",
+   "metadata": {},
+   "source": [
+    "83. Create a matrix `E` and find its transpose."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "5e88aefd-09f2-4c1b-b07c-c0a10fd3b7cf",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[23 55 49]\n",
+      " [11 66 37]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "e=np.random.randint(1,100,size=(3,2))\n",
+    "transpose1=np.transpose(mat)\n",
+    "print(transpose1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0b3edb63-b4bc-44f1-90da-2aac70eb5eaa",
+   "metadata": {},
+   "source": [
+    "84. Generate a square matrix `F` and compute its determinant."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "33564670-0595-4a73-93ed-92eedb8a5651",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "59.999999999999986\n"
+     ]
+    }
+   ],
+   "source": [
+    "f=np.random.randint(1,100,size=(2,2))\n",
+    "determinent=np.linalg.det(f)\n",
+    "print(determinent)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8f2fec05-bd93-4ead-b151-f12f82d987c8",
+   "metadata": {},
+   "source": [
+    "85. Create a square matrix `G` and find its inverse"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "cdb06873-9a3d-45bf-94ae-07922666b87b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[-0.00636943  0.01627742]\n",
+      " [ 0.05732484 -0.0353857 ]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "g=np.random.randint(1,100,size=(2,2))\n",
+    "inv=np.linalg.inv(g)\n",
+    "print(inv)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b69afa4d-f787-46c3-bdac-cfaffe6518c2",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
